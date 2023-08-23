@@ -1,0 +1,20 @@
+input.ng-invalid.ng-touched {
+    border-color: red;
+}
+
+input {
+    margin-top: 10px;
+}
+
+span.form-error {
+    color: red;
+    font-weight: bold;
+}
+
+span.help-block {
+    color: red;
+}
+
+label {
+    font-weight: bold;
+}

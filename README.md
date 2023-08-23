@@ -22,6 +22,33 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
+## Additional Dependencies
+
+Add the following libraries to the project to get the proper styling and functionality.
+
+Install the latest Bootstrap libraries:
+```
+npm install bootstrap@5.3.0 --save
+```
+
+Install the latest PopperJS libraries:
+```
+npm install @popperjs/core --save
+```
+
+Add the following lines to the `scripts` and `styles` sections of the angular.json file:
+
+```json
+            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
+```
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

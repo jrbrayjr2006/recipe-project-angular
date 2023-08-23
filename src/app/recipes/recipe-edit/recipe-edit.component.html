@@ -1,0 +1,82 @@
+<form class="form" [formGroup]="recipeFormReactive" (ngSubmit)="onSubmit()">
+    <fieldset>
+    
+      <!-- Form Name -->
+      <legend>Edit Recipe</legend>
+    
+      
+      <!-- Button (Double) -->
+      <div class="form-group">
+        <div class="col-xs-12">
+          <button name="successBtn" class="btn btn-success">Success</button>
+          <button name="cancelBtn" class="btn btn-danger">Cancel</button>
+        </div>
+      </div>
+      
+      <!-- Text input-->
+      <div class="row g-3">
+        <div class="input-group">
+          <label class="col-md-4 control-label" for="recipeName">Name</label>  
+          <div class="col-md-8">
+          <input name="recipeName" type="text" placeholder="recipe name" class="form-control input-md" formControlName="recipeName" required>
+          <span class="help-block">You must enter a recipe name</span>  
+          </div>
+        </div>
+      </div>
+      
+      
+      <!-- Text input-->
+      <div class="row g-3">
+        <div class="input-group">
+          <label class="col-md-4 control-label" for="recipeImagePath">Image Path</label>
+          <div class="col-md-8">
+            <input name="recipeImagePath" type="text" placeholder="image path" formControlName="recipeImagePath" #recipeImagePath class="form-control input-md">
+            <span class="help-block">Please enter an image path</span>
+          </div>
+          <div>
+            <img src="{{recipeImagePath.value}}" style="max-height: 100px;" alt="image preview" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Textarea -->
+      <div class="row g-3 input-group">
+        <div class="form-group">
+          <label class="col-md-12 control-label" for="recipeDescription">Description</label>
+          <div class="col-md-12">                     
+            <textarea class="form-control" name="recipeDescription" rows="6" formControlName="recipeDescription">default text</textarea>
+          </div>
+        </div>
+      </div>
+    
+
+      <!--  -->
+      <div class="row">
+        <div class="col-md-12" formArrayName="recipeIngredients">
+          <div class="row g-3 input-group flex-nowrap"
+            *ngFor="let ingredientCtr of ingredientArray.controls; let i = index;">
+            <ng-container [formGroup]="ingredientCtr">
+              <div class="col-md-8">
+                <input type="text" name="ingredientName" placeholder="Ingredient Name" formControlName="ingredientName" class="form-control"/>
+              </div>
+              <div class="col-md-2">
+                <input type="number" name="ingredientAmount" placeholder="Ingedient Amount" formControlName="ingredientAmount" class="form-control" />
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-danger">X</button>
+              </div>
+            </ng-container>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <button class="btn btn-primary" (click)="onAddIngredient()">Add Ingredient</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    </fieldset>
+
+
+</form>
+    
