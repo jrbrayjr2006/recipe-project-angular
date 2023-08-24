@@ -8,8 +8,8 @@
       <!-- Button (Double) -->
       <div class="form-group">
         <div class="col-xs-12">
-          <button name="successBtn" class="btn btn-success">Success</button>
-          <button name="cancelBtn" class="btn btn-danger">Cancel</button>
+          <button type="submit" name="successBtn" class="btn btn-success" [disabled]="!recipeFormReactive.valid">Save</button>
+          <button type="button" name="cancelBtn" class="btn btn-danger" (click)="onCancel()">Cancel</button>
         </div>
       </div>
       
@@ -18,8 +18,8 @@
         <div class="input-group">
           <label class="col-md-4 control-label" for="recipeName">Name</label>  
           <div class="col-md-8">
-          <input name="recipeName" type="text" placeholder="recipe name" class="form-control input-md" formControlName="recipeName" required>
-          <span class="help-block">You must enter a recipe name</span>  
+          <input name="recipeName" type="text" placeholder="recipe name" class="form-control input-md" formControlName="recipeName">
+          <span class="help-block" *ngIf="!recipeFormReactive.get('recipeName').valid && recipeFormReactive.get('recipeName').touched">You must enter a recipe name</span>  
           </div>
         </div>
       </div>
@@ -30,11 +30,11 @@
         <div class="input-group">
           <label class="col-md-4 control-label" for="recipeImagePath">Image Path</label>
           <div class="col-md-8">
-            <input name="recipeImagePath" type="text" placeholder="image path" formControlName="recipeImagePath" #recipeImagePath class="form-control input-md">
-            <span class="help-block">Please enter an image path</span>
+            <input name="recipeImagePath" type="text" placeholder="image path" formControlName="recipeImagePath" class="form-control input-md">
+            <span class="help-block" *ngIf="!recipeFormReactive.get('recipeImagePath').valid && recipeFormReactive.get('recipeImagePath').touched">Please enter an image path</span>
           </div>
           <div>
-            <img src="{{recipeImagePath.value}}" style="max-height: 100px;" alt="image preview" />
+            <img *ngIf="editMode" src="{{recipeFormReactive.get('recipeImagePath').value}}" style="max-height: 100px;" alt="image preview" />
           </div>
         </div>
       </div>
@@ -54,22 +54,22 @@
       <div class="row">
         <div class="col-md-12" formArrayName="recipeIngredients">
           <div class="row g-3 input-group flex-nowrap"
-            *ngFor="let ingredientCtr of ingredientArray.controls; let i = index;">
-            <ng-container [formGroup]="ingredientCtr">
+            *ngFor="let ingredientCtr of controls; let i = index;" [formGroupName]="i">
+            <!-- <ng-container [formGroup]="ingredientCtr"> -->
               <div class="col-md-8">
-                <input type="text" name="ingredientName" placeholder="Ingredient Name" formControlName="ingredientName" class="form-control"/>
+                <input type="text" name="name" placeholder="Ingredient Name" formControlName="name" class="form-control"/>
               </div>
               <div class="col-md-2">
-                <input type="number" name="ingredientAmount" placeholder="Ingedient Amount" formControlName="ingredientAmount" class="form-control" />
+                <input type="number" name="amount" placeholder="Ingedient Amount" formControlName="amount" class="form-control" />
               </div>
               <div class="col-md-2">
                 <button class="btn btn-danger">X</button>
               </div>
-            </ng-container>
+            <!-- </ng-container> -->
           </div>
           <div class="row">
             <div class="col-md-12">
-              <button class="btn btn-primary" (click)="onAddIngredient()">Add Ingredient</button>
+              <button type="button" class="btn btn-primary" (click)="onAddIngredient()">Add Ingredient</button>
             </div>
           </div>
         </div>

@@ -8,9 +8,11 @@ import { Subject } from 'rxjs';
 })
 export class RecipesService {
 
+  recipeChanged: Subject<Recipe[]> = new Subject<Recipe[]>();
+
   private recipes: Recipe[] = [
     new Recipe('Grandma Zucchini Bread Recipe', 
-      'A sample first recipe', 
+      "My grandma's zucchini bread recipe is a top-secret family recipe! This spiced moist bread uses dates for a delicious change from ordinary zucchini bread. We like to spread warm slices with softened cream cheese for an extra-special treat.", 
       'https://www.allrecipes.com/thmb/msnH4OeZ6m9dXZIk7nHEqMn9t6I=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/147954grandmas-best-zucchini-breadTammyLynn4x3-5fe8c7dcdb34415f9ff227523f801e3c.jpg', 
       [
         new Ingredient('flour', 3),
@@ -47,5 +49,23 @@ export class RecipesService {
     let recipe = this.recipes[recipeIndex];
     console.log("getting " + recipe.name);
     return recipe;
+  }
+
+  addRecipe(recipe: Recipe) {
+    console.log('adding new recipe...');
+    this.recipes.push(recipe);
+    this.recipeChanged.next(this.recipes);
+  }
+
+  updateRecipe(index: number, updatedRecipe: Recipe) {
+    console.log('updating an existing recipe...');
+    this.recipes[index] = updatedRecipe;
+    this.recipeChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    console.log('deleting recipe...');
+    this.recipes.splice(index, 1);
+    this.recipeChanged.next(this.recipes.slice());
   }
 }
