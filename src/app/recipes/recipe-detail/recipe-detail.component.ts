@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { ShoppingListService } from 'src/app/shared/shopping-list.service';
 import { Ingredient } from 'src/app/shared/ingredient.model';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipesService } from 'src/app/shared/recipes.service';
 
 @Component({
@@ -14,7 +14,10 @@ export class RecipeDetailComponent implements OnInit {
   recipe: Recipe = new Recipe('default recipe', 'default description', 'https://images.pexels.com/photos/4033636/pexels-photo-4033636.jpeg?auto=compress&cs=tinysrgb&w=1600', []);
   recipeIndex: number;
 
-  constructor(private shoppingListService: ShoppingListService, private recipeService: RecipesService, private activatedRoute: ActivatedRoute) {}
+  constructor(private shoppingListService: ShoppingListService, 
+    private recipeService: RecipesService, 
+    private activatedRoute: ActivatedRoute, 
+    private router: Router) {}
 
   ngOnInit(): void {
     this.recipeIndex = this.activatedRoute.snapshot.params['id'];
@@ -36,6 +39,7 @@ export class RecipeDetailComponent implements OnInit {
   onDeleteRecipe() {
     console.debug('on delete recipe...');
     this.recipeService.deleteRecipe(this.recipeIndex);
+    this.router.navigate(['/recipes']);
   }
 
 }

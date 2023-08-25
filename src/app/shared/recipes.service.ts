@@ -29,13 +29,21 @@ export class RecipesService {
         new Ingredient('flour', 1)
       ]),
     new Recipe('Grandma Apple Pie Recipe', 
-      'The last sample recipe', 
-      'https://www.allrecipes.com/thmb/On2gfB1skhCgBo7bRUSiSSy4qzM=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/736203-apple-pie-by-grandma-ople-photo-by-holiday-baker-c2f762a393084f3da24d26b61f875801.jpg', 
+      'This amazing apple pie recipe belonged to my grandmother. I have never seen another one quite like it! It will always be my favorite and has won several first place prizes in local competitions. It makes the perfect dessert for family dinners or during the holidays, topped with whipped cream or ice cream, or alongside a slice of Cheddar cheese.', 
+      'https://www.allrecipes.com/thmb/y4A1u56wlxTpMexUFWXQxNyZz8k=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Screen-Shot-2022-01-30-at-8.33.07-PM-9fbdb6fefa41482d8a1dc1f56266d8fb.png', 
       [
         new Ingredient('apples', 8),
         new Ingredient('flour', 3),
         new Ingredient('unsalted butter', 0.5),
         new Ingredient('sugar', 0.5)
+      ]),
+      new Recipe('Churro Cheesecake Bars',
+      'Churros meet cheesecake in these delicious churro cheesecake bars. Store-bought crescent dough is filled with a cinnamony cream cheese mixture and topped with cinnamon sugar. Serve with Mexican cajeta for extra caramel flavor.',
+      'https://www.allrecipes.com/thmb/164Lk9BNB1WzoZ5YZixOIJPWXjQ=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/7554374-churro-cheesecake-bars-mfs-3x4-1959-7315844f37c24488879440c9949d2eb1.jpg', 
+      [
+        new Ingredient('sugar', 1),
+        new Ingredient('cinnamon', 1),
+        new Ingredient('egg', 1)
       ])
   ];
 

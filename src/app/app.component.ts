@@ -16,35 +16,35 @@ OnDestroy {
   title = 'recipe-project';
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.info('ngOnChanges called!');
+    console.debug('ngOnChanges called!');
   }
 
   ngOnInit(): void {
-    console.info("ngOnInit called!");
+    console.debug("ngOnInit called!");
   }
 
   ngDoCheck(): void {
-    console.info('ngDoCheck called!');
+    console.debug('ngDoCheck called!');
   }
 
   ngAfterContentInit(): void {
-    console.info('ngAfterContentInit called!');
+    console.debug('ngAfterContentInit called!');
   }
 
   ngAfterContentChecked(): void {
-    console.info('ngAfterContentChecked called!');
+    console.debug('ngAfterContentChecked called!');
   }
 
   ngAfterViewInit(): void {
-    console.info('ngAfterViewInit called!');
+    console.debug('ngAfterViewInit called!');
   }
 
   ngAfterViewChecked(): void {
-    console.info('ngAfterViewChecked called!');
+    console.debug('ngAfterViewChecked called!');
   }
 
   ngOnDestroy(): void {
-    console.info('ngOnDestroy called!');
+    console.debug('ngOnDestroy called!');
   }
 
 }
